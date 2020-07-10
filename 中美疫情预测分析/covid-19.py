@@ -79,7 +79,7 @@ def line_picture(us_df):
         date.append('20-'+str(month)+'-'+str(day))  #使日期不再显示几时几分几秒
         # date.append(datetime.strptime('2020-%s-%s' % (month, day), '%Y-%m-%d'))
     (
-        Line(init_opts=opts.InitOpts(width="1600px", height="800px"))
+        Line(init_opts=opts.InitOpts(width="1000px", height="600px"))
             .add_xaxis(xaxis_data=date)
             .add_yaxis(
                 series_name="累计确诊",
