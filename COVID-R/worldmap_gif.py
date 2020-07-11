@@ -5,7 +5,6 @@
 
 import json
 from pyecharts import options as opts
-from pyecharts.charts import Map
 from pyecharts.charts import Timeline, Map
 
 '''
@@ -23,6 +22,7 @@ value = []
 path = r'G:\新建文件夹\covid19-master\docs\timeseries.json'
 f = open(path, mode='r', encoding='utf-8')
 dt = json.load(f)
+dt['United States'] = dt.pop('US')
 
 # 所有国家的名字
 country_name = dt.keys()
@@ -33,7 +33,7 @@ country_name = list(country_name)
 # print(confirmed)
 
 # 处理时间
-for i in dt['US']:
+for i in dt['United States']:
     date_list.append( i['date'] )
 
 # 处理字典里的数据
