@@ -66,7 +66,7 @@ def plot_us(us_df):
     plt.show()
 
 # pyecharts作累计折线图（效果不错）
-def line_picture(us_df):
+def line_us(us_df):
     confirmed = us_df['confirmed'].tolist()
     deaths = us_df['deaths'].tolist()
     recovered = us_df['recovered'].tolist()
@@ -108,7 +108,7 @@ def line_picture(us_df):
     )
 
 # pyecharts作新增折线图
-def line_picture_newadd(us_df):
+def line_us_newadd(us_df):
     new_confirmed = []
     new_deaths = []
     new_recovered = []
@@ -161,13 +161,16 @@ def line_picture_newadd(us_df):
             .render("美国新增人数.html")
     )
 
+def geo_us():
+    pass
+
 if __name__=='__main__':
     dt = read_File()
     us_df = get_us_data(dt)
     china_df = get_china_data(dt)
     # plot_us(us_df)
-    line_picture(us_df)
-    line_picture_newadd(us_df)
+    line_us(us_df)
+    line_us_newadd(us_df)
 
 
 
