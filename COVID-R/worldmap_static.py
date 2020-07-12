@@ -22,14 +22,16 @@ for i in country_name:
 # print(confirmed)
 
 c = (
-    Map(init_opts=opts.InitOpts(width="1000px", height="600px"))
-    .add("累计确诊人数", [list(z) for z in zip(country_name, confirmed)], "world")
+    Map()
+    # Map(init_opts=opts.InitOpts(width="1000px", height="600px"))
+    .add("累计确诊人数", [list(z) for z in zip(country_name, confirmed)], "world",
+         is_map_symbol_show=False)
     .set_series_opts(label_opts=opts.LabelOpts(is_show=False))
     .set_global_opts(
         title_opts=opts.TitleOpts(title="Map-世界地图"),
-        visualmap_opts=opts.VisualMapOpts(max_=400),
+        visualmap_opts=opts.VisualMapOpts(max_=100000),
     )
-    .render("世界地图.html")
+    .render("世界地图累计确诊.html")
 )
 
 
