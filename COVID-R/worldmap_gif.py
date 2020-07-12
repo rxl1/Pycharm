@@ -47,11 +47,13 @@ while i <len(date_list):
     i = i+1
 # print(type(confirmed_dict))
 # print(confirmed_dict['2020-5-25'])
+
+# 画图
 tl = Timeline() # 创建时间线轮播多图，可以让图形按照输入的时间动起来
-    #  is_auto_play：自动播放
+     # is_auto_play：自动播放
     #  play_interval：播放时间间隔，单位：毫秒
     #  is_loop_play：是否循环播放
-tl.add_schema(is_auto_play=True, play_interval=50, is_loop_play=False)
+tl.add_schema(is_auto_play=True, play_interval=100, is_loop_play=True)
 
 for date_str in date_list:  # 遍历时间列表
     map0 = (
@@ -66,8 +68,7 @@ for date_str in date_list:  # 遍历时间列表
             )
         )
     tl.add(map0, "%s" % date_str)  # 将当天的地图状态加入时间线中
-
-tl.render('世界地图动态.html')  # 生成最终轮播多图，会在当前目录创建 render.html 文件
+tl.render('世界地图动态累计确诊.html')  # 生成最终轮播多图，会在当前目录创建 render.html 文件
 
 
 
