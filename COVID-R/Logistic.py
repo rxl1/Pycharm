@@ -33,11 +33,14 @@ def logistic_increase_function(t, K, P0, r):
 
 #  日期及感染人数
 # t = [11, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
-t = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+# t = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+t = [1,2,3,4,5,6,7,8,9,10]
 t = np.array(t)
 # P = [41, 45, 62, 291, 440, 571, 835, 1297, 1985, 2762, 4535]
-P = [2727996,2779953,2837189,2890588,2935770,2982928,3041035,3097084,3158932,3219999,3291786,3355646
-     ,3413995]
+# P = [2727996,2779953,2837189,2890588,2935770,2982928,
+#      3041035,3097084,3158932,3219999,3291786,3355646,3413995]
+P = [2727996,2779953,2837189,2890588,2935770,2982928,
+     3041035,3097084,3158932,3219999]
 P = np.array(P)
 
 # 用最小二乘法估计拟合
@@ -45,8 +48,9 @@ P = np.array(P)
 popt1, pcov1 = curve_fit(logistic_increase_function, t,P)
 
 # 获取popt里面是拟合系数
-print("K:capacity  P0:initial_value   r:increase_rate   t:time")
-print(popt1)
+# print("K:capacity  P0:initial_value   r:increase_rate   t:time")
+# print("K:容量  P0:初始值   r:增长率   t:日期")
+# print(popt1)
 
 # 拟合后预测的P值
 P_predict = logistic_increase_function(t, popt1[0], popt1[1], popt1[2])
@@ -55,7 +59,7 @@ P_predict = logistic_increase_function(t, popt1[0], popt1[1], popt1[2])
 # 未来预测
 # future = [11, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 41, 51, 61, 71, 81, 91, 101]
 future= []
-for i in range(1,100):
+for i in range(1,11):
     future.append(i)
 future = np.array(future)
 future_predict = logistic_increase_function(future, popt1[0], popt1[1], popt1[2])
@@ -63,12 +67,12 @@ future_predict = logistic_increase_function(future, popt1[0], popt1[1], popt1[2]
 # 近期情况预测
 # tomorrow = [28, 29, 30, 32, 33, 35, 37, 40]
 tomorrow = []
-for i in range(14,91):
+for i in range(11,30):
     tomorrow.append(i)
 # tomorrow = [14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
 tomorrow = np.array(tomorrow)
 tomorrow_predict = logistic_increase_function(tomorrow, popt1[0], popt1[1], popt1[2])
-
+print(tomorrow_predict)
 # 绘图
 plot1 = plt.plot(t, P, 'o', label="确认感染人数")
 plot2 = plt.plot(t, P_predict, 'r', label='预测感染人数')
